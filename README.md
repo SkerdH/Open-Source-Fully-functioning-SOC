@@ -5,6 +5,8 @@ Building a Security Operations Center (SOC) using open-source tools provides an 
 
 The open-source nature of this SOC allows for flexibility, community support, and frequent updates from contributors worldwide, ensuring you can stay ahead of evolving cyber threats. This architecture improves incident detection and response times while enhancing threat intelligence management. With proper deployment, continuous monitoring, and automated workflows, your organization can establish a proactive security posture to handle today's dynamic cyber threat landscape.
 
+<img src="https://i.imgur.com/QBdLgzq.png" height="80%" width="80%" alt="LinkedInLearning"/>
+
 ## Key Components of the SIEM Stack
 
 ### 1. Log Ingestion

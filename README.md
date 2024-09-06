@@ -1,43 +1,105 @@
-# Open-Source SOC with Wazuh, Graylog, and Security Tools
+# Building a Open-Source Fully Functioning SOC
 
-This project sets up a fully functional open-source SOC (Security Operations Center) utilizing Wazuh, Graylog, OpenSearch, and supporting tools like OpenCTI, MISP, and Velociraptor for security intelligence enrichment and incident response.
+## Introduction
 
-## Architecture Overview
+This project demonstrates how to build a secure, scalable, and intelligent Security Information and Event Management (SIEM) system using open-source tools. By leveraging free software, organizations can minimize costs while maintaining robust security comparable to commercial solutions.
 
-The SOC consists of the following components:
-- **Wazuh**: Central log collection and analysis tool for security monitoring.
-- **Graylog**: Used for log ingestion and further log analysis.
-- **Wazuh Indexer**: Backend storage (Elasticsearch-based) for log storage.
-- **Grafana & Kibana**: Visualization tools for monitoring and dashboards.
-- **OpenCTI & MISP**: Intelligence enrichment tools to gather threat intelligence.
-- **TheHive & Cortex**: Case management system for incident response.
-- **Velociraptor**: Investigative tool for forensic analysis.
-  
-The diagram shows the architecture after full deployment, with components spread across nodes, and demonstrates how log data flows from the Next-Generation Firewall (NGFW) into the system for analysis and monitoring.
+## Key Components of the SIEM Stack
 
-![SOC Architecture](path_to_image)  
+### 1. Log Ingestion
 
-## Components
+Collect logs from various sources:
 
-### 1. **Wazuh**
-- Centralized security monitoring, log collection, and analysis.
-  
-### 2. **Graylog**
-- Log management and analysis.
+- **Endpoints** (e.g., Windows Events, Sysmon, PowerShell)
+- **Network Devices** (e.g., firewalls, IDS/IPS)
+- **Cloud Logs** (e.g., AWS CloudTrail, O365)
 
-### 3. **Wazuh Indexer (OpenSearch)**
-- Elasticsearch-based backend storage to store and index logs.
+**Tool**: [Graylog](https://www.graylog.org/)  
+**Enterprise Alternatives**: Splunk, LogRhythm, IBM QRadar
 
-### 4. **Grafana & Kibana**
-- Provides dashboards for visualizing logs and metrics from security events.
+### 2. Log Analysis
 
-### 5. **OpenCTI & MISP**
-- Intelligence enrichment tools to bring threat intelligence data into the environment.
+Analyze collected logs to prioritize events and detect threats.
 
-### 6. **TheHive & Cortex**
-- Case management system for managing incidents and response actions.
+**Tool**: [Wazuh](https://wazuh.com/)  
+**Enterprise Alternatives**: AlienVault USM, McAfee ESM, Sumo Logic
 
-### 7. **Velociraptor**
-- Forensic investigation and incident response.
+### 3. Backend Storage
 
+Store logs efficiently with scalability and high availability.
+
+**Tool**: Wazuh-Indexer (Fork of OpenSearch)  
+**Enterprise Alternatives**: Elasticsearch, Azure Monitor Logs, Google Chronicle
+
+### 4. Visualization
+
+Create customizable dashboards for effective monitoring.
+
+**Tool**: [Grafana](https://grafana.com/)  
+**Enterprise Alternatives**: Kibana, Tableau, Power BI
+
+### 5. Intelligence Enrichment
+
+Enrich logs with threat intelligence feeds for better threat detection.
+
+**Tools**: [OpenCTI](https://www.opencti.io/), [MISP](https://www.misp-project.org/)  
+**Enterprise Alternatives**: Recorded Future, ThreatConnect, Palo Alto AutoFocus
+
+### 6. Case Management
+
+Collaborate on incidents and manage response tasks effectively.
+
+**Tools**: [TheHIVE](https://thehive-project.org/) / [Cortex](https://www.cortex-app.com/)  
+**Enterprise Alternatives**: ServiceNow, IBM Resilient, Splunk Phantom
+
+### 7. Automation
+
+Automate routine tasks to improve response times.
+
+**Tool**: [Shuffle](https://shuffler.io/)  
+**Enterprise Alternatives**: Cortex XSOAR, Rapid7 InsightConnect, Swimlane
+
+### 8. Investigation
+
+Perform digital forensics and incident response quickly across endpoints.
+
+**Tool**: [Velociraptor](https://www.velocidex.com/velociraptor/)  
+**Enterprise Alternatives**: Carbon Black Response, CrowdStrike Falcon, FireEye Endpoint Security
+
+### 9. Health Monitoring
+
+Monitor the performance and uptime of the SIEM stack.
+
+**Tools**: [InfluxDB](https://www.influxdata.com/) / [Telegraf](https://github.com/influxdata/telegraf), [Uptime Kuma](https://github.com/louislam/uptime-kuma)  
+**Enterprise Alternatives**: Datadog, SolarWinds, Zabbix
+
+## Deployment Overview
+
+The stack includes the following open-source tools:
+
+- **Wazuh-Indexer** (OpenSearch)
+- **Graylog**
+- **Wazuh Manager / Agents**
+- **Grafana**
+- **MISP**
+- **OpenCTI**
+- **TheHIVE / Cortex**
+- **Velociraptor / Agents**
+- **Shuffle**
+- **InfluxDB / Telegraf**
+- **Uptime Kuma**
+
+## How to Get Started
+
+1. Set up backend storage with Wazuh-Indexer.
+2. Install Graylog and connect it to your log sources.
+3. Deploy Wazuh Manager to analyze logs and enrich data with threat intelligence from OpenCTI and MISP.
+4. Set up Grafana to create customizable dashboards for real-time monitoring.
+5. Automate workflows using Shuffle.
+6. Use Velociraptor to perform forensic analysis across endpoints.
+7. Monitor the stack’s health with InfluxDB/Telegraf and Uptime Kuma.
+
+## Conclusion
+
+This open-source SIEM stack offers a cost-effective and customizable solution for building a secure, intelligent, and scalable Security Operations Center (SOC). By leveraging these tools, organizations can achieve commercial-grade security while maintaining flexibility and control over their environment.
 

@@ -1,12 +1,10 @@
-**Download the Certificate Tool**
-   To secure the communication between components:
-   ```bash
-   curl -sO https://packages.wazuh.com/4.3/wazuh-certs-tool.sh
-   curl -sO https://packages.wazuh.com/4.3/config.yml
-Configure the Nodes Edit the config.yml to define the Wazuh indexer, server, and dashboard nodes:
+# Download the Certificate Tool
+curl -sO https://packages.wazuh.com/4.3/wazuh-certs-tool.sh
+curl -sO https://packages.wazuh.com/4.3/config.yml
 
-yaml
-Copy code
+# Configure the Nodes
+# Edit the config.yml to define the Wazuh indexer, server, and dashboard nodes:
+cat <<EOF > config.yml
 nodes:
   # Wazuh indexer nodes
   indexer:
@@ -16,49 +14,39 @@ nodes:
     #   ip: <indexer-node-ip>
     # - name: node-3
     #   ip: <indexer-node-ip>
+
   # Wazuh server nodes
   server:
     - name: wazuh-1
       ip: <wazuh-manager-ip>
+
   # Wazuh dashboard node
   dashboard:
     - name: dashboard
       ip: <dashboard-node-ip>
-Generate Certificates Run the certificate tool to generate certificates for secure communication between the nodes:
+EOF
 
-For a single node:
-
-bash
-Copy code
+# Generate Certificates
+# For a Single Node:
 ./wazuh-certs-tool.sh
-For multiple nodes:
 
-bash
-Copy code
+# For Multiple Nodes:
 bash ./wazuh-certs-tool.sh -A
+
+# Package the certificates into a tar archive
 tar -cvf ./wazuh-certificates.tar -C ./wazuh-certificates/ .
-Install Wazuh Indexer
 
-bash
-Copy code
+# Install Wazuh Indexer
 apt-get -y install wazuh-indexer
-Install the GPG Key
 
-bash
-Copy code
+# Install the GPG Key
 curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import && chmod 644 /usr/share/keyrings/wazuh.gpg
-Add the Repository
 
-bash
-Copy code
+# Add the Repository
 echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | tee -a /etc/apt/sources.list.d/wazuh.list
-Update Package Information
 
-bash
-Copy code
+# Update Package Information
 apt-get update
-Verify the Certificates You can verify the certificate common name (CN) with the following command:
 
-bash
-Copy code
+# Verify the Certificates
 openssl x509 -subject -nameopt RFC2253 -noout -in hostname.pem

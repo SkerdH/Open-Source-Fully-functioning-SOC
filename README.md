@@ -1,83 +1,72 @@
-# Building a Open-Source Fully Functioning SOC
+# Building an Open-Source Fully Functioning SOC
 
 ## Introduction
+Building a Security Operations Center (SOC) using open-source tools provides an effective and cost-efficient solution for organizations of all sizes. By utilizing a stack of customizable tools, you can create a scalable, secure, and intelligent system that rivals proprietary SIEM solutions. 
 
-This project demonstrates how to build a secure, scalable, and intelligent Security Information and Event Management (SIEM) system using open-source tools. By leveraging free software, organizations can minimize costs while maintaining robust security comparable to commercial solutions.
+The open-source nature of this SOC allows for flexibility, community support, and frequent updates from contributors worldwide, ensuring you can stay ahead of evolving cyber threats. This architecture improves incident detection and response times while enhancing threat intelligence management. With proper deployment, continuous monitoring, and automated workflows, your organization can establish a proactive security posture to handle today's dynamic cyber threat landscape.
 
 ## Key Components of the SIEM Stack
 
 ### 1. Log Ingestion
+**Collect logs from various sources:**
+- **Endpoints**: Windows Events, Sysmon, PowerShell
+- **Network Devices**: Firewalls, IDS/IPS
+- **Cloud Logs**: AWS CloudTrail, O365
 
-Collect logs from various sources:
-
-- **Endpoints** (e.g., Windows Events, Sysmon, PowerShell)
-- **Network Devices** (e.g., firewalls, IDS/IPS)
-- **Cloud Logs** (e.g., AWS CloudTrail, O365)
-
-**Tool**: [Graylog](https://www.graylog.org/)  
+**Tool**: Graylog  
 **Enterprise Alternatives**: Splunk, LogRhythm, IBM QRadar
 
 ### 2. Log Analysis
+**Analyze collected logs to prioritize events and detect threats.**
 
-Analyze collected logs to prioritize events and detect threats.
-
-**Tool**: [Wazuh](https://wazuh.com/)  
+**Tool**: Wazuh  
 **Enterprise Alternatives**: AlienVault USM, McAfee ESM, Sumo Logic
 
 ### 3. Backend Storage
-
-Store logs efficiently with scalability and high availability.
+**Store logs efficiently with scalability and high availability.**
 
 **Tool**: Wazuh-Indexer (Fork of OpenSearch)  
 **Enterprise Alternatives**: Elasticsearch, Azure Monitor Logs, Google Chronicle
 
 ### 4. Visualization
+**Create customizable dashboards for effective monitoring.**
 
-Create customizable dashboards for effective monitoring.
-
-**Tool**: [Grafana](https://grafana.com/)  
+**Tool**: Grafana  
 **Enterprise Alternatives**: Kibana, Tableau, Power BI
 
 ### 5. Intelligence Enrichment
+**Enrich logs with threat intelligence feeds for better threat detection.**
 
-Enrich logs with threat intelligence feeds for better threat detection.
-
-**Tools**: [OpenCTI](https://www.opencti.io/), [MISP](https://www.misp-project.org/)  
+**Tools**: OpenCTI, MISP  
 **Enterprise Alternatives**: Recorded Future, ThreatConnect, Palo Alto AutoFocus
 
 ### 6. Case Management
+**Collaborate on incidents and manage response tasks effectively.**
 
-Collaborate on incidents and manage response tasks effectively.
-
-**Tools**: [TheHIVE](https://thehive-project.org/) / [Cortex](https://www.cortex-app.com/)  
+**Tools**: TheHIVE / Cortex  
 **Enterprise Alternatives**: ServiceNow, IBM Resilient, Splunk Phantom
 
 ### 7. Automation
+**Automate routine tasks to improve response times.**
 
-Automate routine tasks to improve response times.
-
-**Tool**: [Shuffle](https://shuffler.io/)  
+**Tool**: Shuffle  
 **Enterprise Alternatives**: Cortex XSOAR, Rapid7 InsightConnect, Swimlane
 
 ### 8. Investigation
+**Perform digital forensics and incident response quickly across endpoints.**
 
-Perform digital forensics and incident response quickly across endpoints.
-
-**Tool**: [Velociraptor](https://www.velocidex.com/velociraptor/)  
+**Tool**: Velociraptor  
 **Enterprise Alternatives**: Carbon Black Response, CrowdStrike Falcon, FireEye Endpoint Security
 
 ### 9. Health Monitoring
+**Monitor the performance and uptime of the SIEM stack.**
 
-Monitor the performance and uptime of the SIEM stack.
-
-**Tools**: [InfluxDB](https://www.influxdata.com/) / [Telegraf](https://github.com/influxdata/telegraf), [Uptime Kuma](https://github.com/louislam/uptime-kuma)  
+**Tools**: InfluxDB / Telegraf, Uptime Kuma  
 **Enterprise Alternatives**: Datadog, SolarWinds, Zabbix
 
 ## Deployment Overview
-
 The stack includes the following open-source tools:
-
-- **Wazuh-Indexer** (OpenSearch)
+- **Wazuh-Indexer (OpenSearch)**
 - **Graylog**
 - **Wazuh Manager / Agents**
 - **Grafana**
@@ -100,6 +89,4 @@ The stack includes the following open-source tools:
 7. Monitor the stack’s health with InfluxDB/Telegraf and Uptime Kuma.
 
 ## Conclusion
-
 This open-source SIEM stack offers a cost-effective and customizable solution for building a secure, intelligent, and scalable Security Operations Center (SOC). By leveraging these tools, organizations can achieve commercial-grade security while maintaining flexibility and control over their environment.
-
